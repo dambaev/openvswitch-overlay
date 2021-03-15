@@ -75,7 +75,7 @@ in {
 
     systemd.services.ovsdb = {
       description = "Open_vSwitch Database Server";
-      wantedBy = [ "network-interfaces.target" ];
+      wantedBy = [ "multi-user.target" ];
       after = [ "systemd-udev-settle.service" ];
       path = [ cfg.package ];
       restartTriggers = [ db cfg.package ];
