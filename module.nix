@@ -126,9 +126,10 @@ in {
 
     systemd.services.ovs-vswitchd = {
       description = "Open_vSwitch Daemon";
-      wantedBy = [ "network-interfaces.target" ]; # OVS is basically provides network interfaces
+      wantedBy = [ "multi-user.target" ];
       bindsTo = [ "ovsdb.service" ];
       after = [ "ovsdb.service" ];
+      before = [ "dhcpcd.service" ];
       path = [ cfg.package ];
       serviceConfig = {
         ExecStart = ''
