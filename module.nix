@@ -5,11 +5,11 @@
 with lib;
 
 let
-  cfg = config.virtualisation.vswitch;
+  cfg = config.virtualisation.vswitch_overlay;
 
 in {
 
-  options.virtualisation.vswitch = {
+  options.virtualisation.vswitch_overlay = {
     enable = mkOption {
       type = types.bool;
       default = false;
