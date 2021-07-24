@@ -125,11 +125,11 @@ in {
     };
 
     systemd.services.ovs-vswitchd = {
-      description = "Open_vSwitch Daemon";
+      description = lib.mkOverride 20 "Open_vSwitch_Overrided Daemon";
       wantedBy = [ "multi-user.target" ];
       bindsTo = [ "ovsdb.service" ];
       after = [ "ovsdb.service" ];
-      before = [ "dhcpcd.service" ];
+      before = lib.mkOverride 20 [ "dhcpcd.service" ];
       path = [ cfg.package ];
       serviceConfig = {
         ExecStart = ''
